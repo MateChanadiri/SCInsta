@@ -33,23 +33,20 @@
     if ([SCIUtils getBoolPref:@"prevent_doom_scrolling"]) {
         IGRefreshControl *_refreshControl = MSHookIvar<IGRefreshControl *>(self, "_refreshControl");
         [self refreshControlDidEndFinishLoadingAnimation:_refreshControl];
+
         return;
     }
 
     if ([SCIUtils getBoolPref:@"refresh_reel_confirm"]) {
         NSLog(@"[SCInsta] Reel refresh triggered");
         
-        // Fix: Capture the %orig call in a local block where Logos can see it
-        void (^callOriginal)(void) = ^{
-            %orig(arg1, arg2);
-        };
-        
+        // Capture self and arguments to use in block
         __weak typeof(self) weakSelf = self;
+        NSInteger capturedArg1 = arg1;
+        BOOL capturedArg2 = arg2;
+        
         [SCIUtils showConfirmation:^(void) { 
-            // Execute the saved original call safely inside the block
-            if (callOriginal) {
-                callOriginal();
-            }
+            [weakSelf _refreshReelsWithParamsForNetworkRequest:capturedArg1 userDidPullToRefresh:capturedArg2];
         }
                      cancelHandler:^(void) {
                          IGRefreshControl *_refreshControl = MSHookIvar<IGRefreshControl *>(weakSelf, "_refreshControl");
@@ -57,11 +54,10 @@
                      }
                              title:@"Refresh Reels"];
     } else {
-        %orig(arg1, arg2);
+        return %orig(arg1, arg2);
     }
 }
 %end
-
 
 // * Disable volume/mute button triggering unmutes
 %hook IGAudioStatusAnnouncer
