@@ -6,31 +6,7 @@ A feature-rich tweak for Instagram on iOS!\
 
 > [!NOTE]
 > ⚙️ &nbsp;To modify SCInsta's settings, check out [this section below](https://github.com/SoCuul/SCInsta#Opening-Tweak-Settings) for help\
-> ❓ &nbsp;If you have any questions or need help with the tweak, visit the [Discussions](https://github.com/SoCuul/SCInsta/discussions) tab
->
-> ✨ &nbsp;If you have a feature request, [click here](https://github.com/SoCuul/SCInsta/issues/new/choose)\
-> 🐛 &nbsp;If you have a bug report, [click here](https://github.com/SoCuul/SCInsta/issues/new/choose)
-> 
-
----
-
-# Installation
->[!IMPORTANT]
-> Which type of device are you planning on installing this tweak on?
-> - Jailbroken/TrollStore device -> [Download pre-built tweak](https://github.com/SoCuul/SCInsta/releases/latest)
-> - Standard iOS device -> [Visit the wiki to create an IPA file](https://github.com/SoCuul/SCInsta/wiki/Building-IPA)
-
-# Features
-### General
-- Hide ads
-- Hide Meta AI
-- Copy description
-- Do not save recent searches
-- Use detailed (native) color picker
-- Enable liquid glass buttons
-- Enable teen app icons
-- IG Notes:
-  - Hide notes tray
+> ❓ &nbsp;If you have any questions or need help \\
   - Hide friends map
   - Enable note theming
   - Custom note themes
