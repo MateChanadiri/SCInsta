@@ -4,8 +4,11 @@
 - (void)_onApproveButtonTapped {
     if ([SCIUtils getBoolPref:@"follow_request_confirm"]) {
         NSLog(@"[SCInsta] Confirm follow request triggered");
-
-        [SCIUtils showConfirmation:^(void) { %orig; }];
+        
+        __weak typeof(self) weakSelf = self;
+        [SCIUtils showConfirmation:^(void) { 
+            [weakSelf _onApproveButtonTapped];
+        }];
     } else {
         return %orig;
     }
@@ -13,8 +16,11 @@
 - (void)_onIgnoreButtonTapped {
     if ([SCIUtils getBoolPref:@"follow_request_confirm"]) {
         NSLog(@"[SCInsta] Confirm follow request triggered");
-
-        [SCIUtils showConfirmation:^(void) { %orig; }];
+        
+        __weak typeof(self) weakSelf = self;
+        [SCIUtils showConfirmation:^(void) { 
+            [weakSelf _onIgnoreButtonTapped];
+        }];
     } else {
         return %orig;
     }
